@@ -1,19 +1,17 @@
 import React from 'react';
-import Header from "./Header";
-import Current from "./Current";
-import Forecast from "./Forecast";
+import Header from "./pages/Header";
+import Dashboard from "./pages/Dashboard";
+
 import './index.css';
 
 function App() {
   return (
     <div>
       <Header></Header>
-      <Current
-      // import today's weather data here
+      <Dashboard
+      // import weather data here
       />
-      <Forecast
-      // import forecast data here
-      />
+     
       
     </div>
   )
