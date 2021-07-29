@@ -27,6 +27,7 @@ body {
 }
 .header-title {
   font-weight: 700;
+  letter-spacing: 5px;
   font-family: "Times New Roman", Times, serif;
   padding-top: 5px;
   color: #87cefa;
@@ -39,11 +40,21 @@ body {
 .input-box {
   text-align: center;
 }
-.input-window {
+input {
+  width: 30vh;
+  height: 5vh;
+  border: 2px solid;
+  border-radius: 10px;
+  text-align: center;
+}
+input:focus {
+  background-color: lightblue;
+  
+}
+
+.btn {
   width: 20vh;
   height: 5vh;
   border: 2px solid;
   border-radius: 20px;
-  padding-right: 5px;
-  padding-left: 5px;
 }

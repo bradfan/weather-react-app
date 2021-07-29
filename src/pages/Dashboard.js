@@ -11,10 +11,11 @@ function Dashboard() {
           //   onChange={handleInputChange}
           name="text"
           className="form-control me-2"
-          type="text"
-          placeholder="Enter City Here"
+        //   type="text"
+          placeholder="Enter City"
           aria-label="Search"
         />
+        
         <button 
         class="btn btn-white btn-animated"
         type="submit"
