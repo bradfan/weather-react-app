@@ -11,22 +11,25 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
    height: 95vh;
-  /* background-image: "./images/weather1.jpg"; */
+   background-image: url(./images/weather1.jpg); 
 }
 
 .header {
   
   background-image: linear-gradient(
     to right bottom,
-    rgb(95, 158, 160),
-    rgb(169, 169, 169)
+    rgb(95, 158, 160,0.5),
+    rgb(169, 169, 169,0.5)
   );
   text-align: center;
   background-size: cover;
   background-position: top;
   position: relative;
+  
 }
 .header-text {
+  font-family:'Times New Roman', Times, serif;
   padding: 5px;
+  color:#87CEFA
 }
 

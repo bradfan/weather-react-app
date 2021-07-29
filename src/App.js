@@ -2,6 +2,7 @@ import React from 'react';
 import Header from "./Header";
 import Current from "./Current";
 import Forecast from "./Forecast";
+import './index.css';
 
 function App() {
   return (
