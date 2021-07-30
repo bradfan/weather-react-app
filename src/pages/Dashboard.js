@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { api_key } from "/api.json";
+import { api_key } from "../api.json";
 
 function Dashboard() {
   const [currentWeather, setCurrentWeather] = useState({});
