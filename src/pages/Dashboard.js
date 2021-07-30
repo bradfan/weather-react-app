@@ -19,7 +19,7 @@ function Dashboard() {
     setCity(val);
     console.log("city data:", city);
   };
-
+  // is useCallback correct here? Review code with api_key currently working.
   const onSubmit = useCallback((event) => {
     event.preventDefault();
     console.log("data:", currentWeather);
