@@ -55,7 +55,7 @@ body {
   display: inline-block;
   width: 20vh;
   height: 5vh;
-  border: 1px solid;
+  border: .5px solid;
   border-radius: 100px;
   position: relative;
 }
@@ -64,17 +64,16 @@ body {
   padding: 15px 40px;
   display: inline-block;
   border-radius: 100px;
-  transition: all 0.2s;
-  
+  transition: all 1s;
 }
 .btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 .btn:active {
   transform: translateY(-1px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 .btn::after {
@@ -88,13 +87,13 @@ body {
   top: 0;
   left: 0;
   z-index: 0;
-  transition: all .4s;
+  transition: all 0.4s;
 }
 .btn-white {
-  background-color: grey;
+  background-color: #fff;
   color: #777;
 }
 .btn:hover::after {
   transform: scaleX(1.6) scale(1.6);
-  opacity: 80;
+  opacity: 0;
 }
