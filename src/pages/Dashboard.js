@@ -6,12 +6,12 @@ function Dashboard() {
     <div>
       <div class="input-box">
         <input
-          class="input-window"
+          className="input-window"
           //   value={city}
           //   onChange={handleInputChange}
           name="text"
-          className="form-control me-2"
-        //   type="text"
+        
+          type="text"
           placeholder="Enter City"
           aria-label="Search"
         />
