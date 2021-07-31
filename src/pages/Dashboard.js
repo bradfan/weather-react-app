@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { api_key } from "../api.json";
-import bootstrap from 'bootstrap'
+
 
 function Dashboard() {
   const [currentWeather, setCurrentWeather] = useState({});
@@ -8,12 +8,11 @@ function Dashboard() {
 
   const getWeather = () => {
     const weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=imperial`;
-    console.log("weatherURL",weatherURL)
+    console.log("weatherURL", weatherURL);
     // fetch data from the URL, resolve to json
     fetch(weatherURL)
       .then((res) => res.json())
       .then((data) => {
-        console.log("weather:", data);
         setCurrentWeather(data);
       });
   };
@@ -56,6 +55,35 @@ function Dashboard() {
         </button>
       </div>
 
+      <div class="card">
+        <img src="..." class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="today">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <p class="temperature">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <p class="humidity">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <p class="wind">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <p class="index">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="#" class="btn-card">
+            Click for Forecast
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
