@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { api_key } from "../api.json";
+import bootstrap from 'bootstrap'
 
 function Dashboard() {
   const [currentWeather, setCurrentWeather] = useState({});
@@ -7,6 +8,8 @@ function Dashboard() {
 
   const getWeather = () => {
     const weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=imperial`;
+    console.log("weatherURL",weatherURL)
+    // fetch data from the URL, resolve to json
     fetch(weatherURL)
       .then((res) => res.json())
       .then((data) => {
@@ -14,6 +17,7 @@ function Dashboard() {
         setCurrentWeather(data);
       });
   };
+  //  recieves input from user and assigns text to value and sets state
   const handleInputChange = (event) => {
     const val = event.target.value;
     setCity(val);
@@ -51,6 +55,7 @@ function Dashboard() {
           Get Weather!!
         </button>
       </div>
+
     </div>
   );
 }
