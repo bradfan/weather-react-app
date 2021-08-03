@@ -22,13 +22,12 @@ function Dashboard() {
     setCity(val);
     console.log("city data:", city);
   };
-  // is useCallback correct here? Review code with api_key currently working.
+  // is useCallback correct here? Review code with api_key working.
   const onSubmit = useCallback((event) => {
     event.preventDefault();
     console.log("currentWeather:", currentWeather);
     getWeather();
   });
-
   return (
     <div>
       <div class="input-box">
@@ -54,26 +53,25 @@ function Dashboard() {
           Get Weather!!
         </button>
       </div>
-
       <div class="day-card">
-        {/* <img src=`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png` class="day-card-img" alt="weather icon" /> */}
-        <div class="card-body">
-          <h5 class="card-title">{currentWeather.name}</h5>
-          <p class="today">Today's Weather is:{}</p>
-          <p class="temperature">Current Temp: {currentWeather.main.temp} F</p>
-          <p class="temperature">Today's High: {currentWeather.main.temp_max} F</p>
-          <p class="temperature">Today's Low: {currentWeather.main.temp_min} F</p>
-          <p class="humidity">Humidity: {currentWeather.main.humidity}%</p>
-          <p class="wind">Wind Speed:{currentWeather.wind} MPH</p>
-          <p class="index">UV Index:
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn-card">
-            Click for Forecast
-          </a>
-        </div>
+      <img src="..." class="day-card-img" alt="weather icon" />
+      <div class="card-body">
+        <h5 class="card-title">{currentWeather.name}</h5>
+        <p class="today">Today's Weather is:{}</p>
+        <p class="temperature">Current Temp: {currentWeather.main.temp} F</p>
+        <p class="temperature">
+          Today's High: {currentWeather.main.temp_max} F
+        </p>
+        <p class="temperature">Today's Low: {currentWeather.main.temp_min} F</p>
+        <p class="humidity">Humidity: {currentWeather.main.humidity}%</p>
+        <p class="wind">Wind Speed:{currentWeather.wind} MPH</p>
+        <a href="#" class="btn-card">
+          Click for Forecast
+        </a>
       </div>
+    </div>
+
+
     </div>
   );
 }
