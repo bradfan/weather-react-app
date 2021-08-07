@@ -2,7 +2,7 @@ import React, { useState, useCallback } from "react";
 import { api_key } from "../api.json";
 
 function Dashboard() {
-  const [currentWeather, setCurrentWeather] = useState({});
+  const [currentWeather, setCurrentWeather] = useState({ data: [] });
   const [city, setCity] = useState("");
 
   const getWeather = () => {
@@ -12,8 +12,8 @@ function Dashboard() {
     fetch(weatherURL)
       .then((res) => res.json())
       .then((data) => {
-        setCurrentWeather(data);
         console.log("data:", data);
+        setCurrentWeather(data);
       });
   };
   //  recieves input from user and assigns text to value and sets state for URL
@@ -25,9 +25,10 @@ function Dashboard() {
   // is useCallback correct here? Review code with api_key working.
   const onSubmit = useCallback((event) => {
     event.preventDefault();
-    console.log("currentWeather:", currentWeather);
+    // console.log("currentWeather:", currentWeather);
     getWeather();
   });
+
   return (
     <div>
       <div class="input-box">
@@ -53,25 +54,30 @@ function Dashboard() {
           Get Weather!!
         </button>
       </div>
-      <div class="day-card">
-      <img src="..." class="day-card-img" alt="weather icon" />
-      <div class="card-body">
-        <h5 class="card-title">{currentWeather.name}</h5>
-        <p class="today">Today's Weather is:{}</p>
-        <p class="temperature">Current Temp: {currentWeather.main.temp} F</p>
-        <p class="temperature">
-          Today's High: {currentWeather.main.temp_max} F
-        </p>
-        <p class="temperature">Today's Low: {currentWeather.main.temp_min} F</p>
-        <p class="humidity">Humidity: {currentWeather.main.humidity}%</p>
-        <p class="wind">Wind Speed:{currentWeather.wind} MPH</p>
-        <a href="#" class="btn-card">
-          Click for Forecast
-        </a>
+      <div>
+        {currentWeather.data
+        ?currentWeather.data.map((obj) => {
+          return (
+            <div class="day-card">
+              <img src="..." class="day-card-img" alt="weather icon" />
+              <div class="card-body">
+                <h5 class="card-title">{obj.name}</h5>
+                <p class="today">Today is: {obj.dt_txt.slice(5,10)}</p>
+                <p class="temperature">Current Temp: {obj.main.temp} F</p>
+                <p class="temperature">Feels Like: {obj.main.feels_like} F</p>
+                <p class="hi-temperature">Today's High: {obj.main.temp_max} F</p>
+                <p class="lo-temperature">Today's Low: {obj.main.temp_min} F</p>
+                <p class="humidity">Humidity: {obj.main.humidity}%</p> 
+                <p class="wind">Wind Speed:{obj.wind} MPH</p>  
+                <a href="#" class="btn-card">
+                  Click for Forecast
+                </a>
+              </div>
+            </div>
+          );
+        })
+      : ""}
       </div>
-    </div>
-
-
     </div>
   );
 }
