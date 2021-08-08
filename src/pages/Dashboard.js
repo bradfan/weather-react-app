@@ -25,7 +25,8 @@ function Dashboard() {
   // is useCallback correct here? Review code with api_key working.
   const onSubmit = useCallback((event) => {
     event.preventDefault();
-    // console.log("currentWeather:", currentWeather);
+    console.log("currentWeather:", currentWeather);
+
     getWeather();
   });
 
@@ -56,7 +57,7 @@ function Dashboard() {
       </div>
       <div>
         {currentWeather.data
-        ?currentWeather.data.map((obj) => {
+        ? currentWeather.data.map((obj) => {
           return (
             <div class="day-card">
               <img src="..." class="day-card-img" alt="weather icon" />
@@ -68,10 +69,20 @@ function Dashboard() {
                 <p class="hi-temperature">Today's High: {obj.main.temp_max} F</p>
                 <p class="lo-temperature">Today's Low: {obj.main.temp_min} F</p>
                 <p class="humidity">Humidity: {obj.main.humidity}%</p> 
-                <p class="wind">Wind Speed:{obj.wind} MPH</p>  
-                <a href="#" class="btn-card">
-                  Click for Forecast
-                </a>
+                <p class="wind">Wind Speed:{obj.wind} MPH</p> 
+                {/* button to be chan ged to reflect forecast and corresponding url, functions etc. */}
+                {/* <button
+          class="form-btn"
+          type="submit"
+          value={city}
+          onClick={(event) => {
+            console.log("city input by user:", event.target.value);
+            onSubmit(event);
+          }}
+        >
+          Get Forecast!!
+        </button>  */}
+               
               </div>
             </div>
           );
