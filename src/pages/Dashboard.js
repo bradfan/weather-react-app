@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { api_key } from "../api.json";
 
 function Dashboard() {
@@ -70,7 +70,7 @@ function Dashboard() {
                 <p class="lo-temperature">Today's Low: {obj.main.temp_min} F</p>
                 <p class="humidity">Humidity: {obj.main.humidity}%</p> 
                 <p class="wind">Wind Speed:{obj.wind} MPH</p> 
-                {/* button to be chan ged to reflect forecast and corresponding url, functions etc. */}
+                {/* button to be changed to reflect forecast and corresponding url, functions etc. */}
                 {/* <button
           class="form-btn"
           type="submit"
