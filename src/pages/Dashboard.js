@@ -13,7 +13,7 @@ function Dashboard() {
       .then((res) => res.json())
       .then((data) => {
         console.log("data:", data);
-        setCurrentWeather(data);
+        setCurrentWeather({data: data.data});
       });
   };
   //  recieves input from user and assigns text to value and sets state for URL
