@@ -14,9 +14,9 @@ function Dashboard() {
     // fetch data from the URL, resolve to json
     fetch(weatherURL)
       .then((res) => res.json())
-      .then((resJson) => {
-        console.log("resJson:", resJson);
-        setCurrentWeather(resJson);
+      .then((data) => {
+        console.log("data:", data);
+        setCurrentWeather(data);
       });
   };
   const getForecast = () => {
@@ -74,8 +74,8 @@ function Dashboard() {
           <div className="day-card">
             <img src="..." className="day-card-img" alt="weather icon" />
             <div className="card-body">
-              <h5 className="card-title">{currentWeather.name}</h5>
-              {/* <p className="today">Today is: {currentWeather.dt_txt.slice(5,10)}</p> */}
+              <h4 className="card-title">{currentWeather.name}</h4>
+              <h5 className="today">Today's Weather:</h5>
               <p className="temperature">
                 Current Temp: {currentWeather.main.temp} F
               </p>
