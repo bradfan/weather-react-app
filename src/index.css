@@ -94,6 +94,6 @@ body {
   color: #777;
 }
 .btn:hover::after {
-  transform: scaleX(1.6) scale(1.6);
+  transform: scaleX(1.6) scaleY(1.6);
   opacity: 0;
 }

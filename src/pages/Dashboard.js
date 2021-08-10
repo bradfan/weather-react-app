@@ -2,8 +2,11 @@ import React, { useState, useCallback, useEffect } from "react";
 import { api_key } from "../api.json";
 
 function Dashboard() {
-  const [currentWeather, setCurrentWeather] = useState({ data: [] });
+  const [currentWeather, setCurrentWeather] = useState(false);
   const [city, setCity] = useState("");
+  const [forecast, setForecast] = useState([]);
+  console.log("currentWeather", currentWeather);
+  console.log("forecast", forecast);
 
   const getWeather = () => {
     const weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=imperial`;
@@ -11,11 +14,21 @@ function Dashboard() {
     // fetch data from the URL, resolve to json
     fetch(weatherURL)
       .then((res) => res.json())
-      .then((data) => {
-        console.log("data:", data);
-        setCurrentWeather({data: data.data});
+      .then((resJson) => {
+        console.log("resJson:", resJson);
+        setCurrentWeather(resJson);
       });
   };
+  const getForecast = () => {
+    const weatherURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&APPID=${api_key}`;
+    fetch(weatherURL)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("weather:", data);
+        setForecast(data);
+      });
+  };
+
   //  recieves input from user and assigns text to value and sets state for URL
   const handleInputChange = (event) => {
     const val = event.target.value;
@@ -26,13 +39,13 @@ function Dashboard() {
   const onSubmit = useCallback((event) => {
     event.preventDefault();
     console.log("currentWeather:", currentWeather);
-
     getWeather();
+    getForecast();
   });
 
   return (
     <div>
-      <div class="input-box">
+      <div className="input-box">
         <input
           className="input-window"
           value={city}
@@ -44,7 +57,7 @@ function Dashboard() {
         />
 
         <button
-          class="btn btn-white btn-animated"
+          className="btn btn-white btn-animated"
           type="submit"
           value={city}
           onClick={(event) => {
@@ -56,38 +69,59 @@ function Dashboard() {
         </button>
       </div>
       <div>
-        {currentWeather.data
-        ? currentWeather.data.map((obj) => {
-          return (
-            <div class="day-card">
-              <img src="..." class="day-card-img" alt="weather icon" />
-              <div class="card-body">
-                <h5 class="card-title">{obj.name}</h5>
-                <p class="today">Today is: {obj.dt_txt.slice(5,10)}</p>
-                <p class="temperature">Current Temp: {obj.main.temp} F</p>
-                <p class="temperature">Feels Like: {obj.main.feels_like} F</p>
-                <p class="hi-temperature">Today's High: {obj.main.temp_max} F</p>
-                <p class="lo-temperature">Today's Low: {obj.main.temp_min} F</p>
-                <p class="humidity">Humidity: {obj.main.humidity}%</p> 
-                <p class="wind">Wind Speed:{obj.wind} MPH</p> 
-                {/* button to be changed to reflect forecast and corresponding url, functions etc. */}
-                {/* <button
-          class="form-btn"
-          type="submit"
-          value={city}
-          onClick={(event) => {
-            console.log("city input by user:", event.target.value);
-            onSubmit(event);
-          }}
-        >
-          Get Forecast!!
-        </button>  */}
-               
-              </div>
+        {/* conditional render on one object .map() not used here */}
+        {currentWeather && (
+          <div className="day-card">
+            <img src="..." className="day-card-img" alt="weather icon" />
+            <div className="card-body">
+              <h5 className="card-title">{currentWeather.name}</h5>
+              {/* <p className="today">Today is: {currentWeather.dt_txt.slice(5,10)}</p> */}
+              <p className="temperature">
+                Current Temp: {currentWeather.main.temp} F
+              </p>
+              <p className="temperature">
+                Feels Like: {currentWeather.main.feels_like} F
+              </p>
+              <p className="hi-temperature">
+                Today's High: {currentWeather.main.temp_max} F
+              </p>
+              <p className="lo-temperature">
+                Today's Low: {currentWeather.main.temp_min} F
+              </p>
+              <p className="humidity">
+                Humidity: {currentWeather.main.humidity}%
+              </p>
+              <p className="wind">Wind Speed:{currentWeather.wind.speed} MPH</p>
             </div>
-          );
-        })
-      : ""}
+          </div>
+        )}
+        ;
+        <div className="forecast-card">
+          {forecast.list
+            ? forecast.list.map((weatherItem, idx) => {
+                if (idx % 8 === 4) {
+                  return (
+                    // forecast card
+                    <div key={idx}>
+                      <ul>
+                        <li>
+                          Date: {forecast?.list[idx]?.dt_txt.slice(5, 10)}
+                        </li>
+
+                        <li>
+                          Temp: {forecast?.list[idx]?.main?.temp} F
+                        </li>
+
+                        <li>
+                          Humidity: {forecast?.list[idx]?.main?.humidity}%
+                        </li>
+                      </ul>
+                    </div>
+                  );
+                }
+              })
+            : ""}
+        </div>
       </div>
     </div>
   );
