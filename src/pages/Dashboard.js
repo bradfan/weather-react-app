@@ -69,58 +69,61 @@ function Dashboard() {
         </button>
       </div>
       <div>
-        {/* conditional render on one object .map() not used here */}
-        {currentWeather && (
-          <div className="day-card">
-            <img src="..." className="day-card-img" alt="weather icon" />
-            <div className="card-body">
-              <h4 className="card-title">{currentWeather.name}</h4>
-              <h5 className="today">Today's Weather:</h5>
-              <p className="temperature">
-                Current Temp: {currentWeather.main.temp} F
-              </p>
-              <p className="temperature">
-                Feels Like: {currentWeather.main.feels_like} F
-              </p>
-              <p className="hi-temperature">
-                Today's High: {currentWeather.main.temp_max} F
-              </p>
-              <p className="lo-temperature">
-                Today's Low: {currentWeather.main.temp_min} F
-              </p>
-              <p className="humidity">
-                Humidity: {currentWeather.main.humidity}%
-              </p>
-              <p className="wind">Wind Speed:{currentWeather.wind.speed} MPH</p>
+        <div className="day-box">
+          {currentWeather && (
+            <div className="day-card">
+              <img src="..." className="day-card-img" alt="weather icon" />
+              <div className="card-body">
+                <h4 className="card-title">{currentWeather.name}</h4>
+                <h5 className="today">Today's Weather:</h5>
+                <p className="temperature">
+                  Current Temp: {currentWeather.main.temp} F
+                </p>
+                <p className="temperature">
+                  Feels Like: {currentWeather.main.feels_like} F
+                </p>
+                <p className="hi-temperature">
+                  Today's High: {currentWeather.main.temp_max} F
+                </p>
+                <p className="lo-temperature">
+                  Today's Low: {currentWeather.main.temp_min} F
+                </p>
+                <p className="humidity">
+                  Humidity: {currentWeather.main.humidity}%
+                </p>
+                <p className="wind">
+                  Wind Speed:{currentWeather.wind.speed} MPH
+                </p>
+              </div>
             </div>
+          )}
+        </div>
+        {/* conditional render on one object .map() not used here */};
+        <div className="forecast-box">
+          <div className="forecast-card">
+            {forecast.list
+              ? forecast.list.map((weatherItem, idx) => {
+                  if (idx % 8 === 4) {
+                    return (
+                      // forecast card
+                      <div key={idx}>
+                        <ul>
+                          <li>
+                            Date: {forecast?.list[idx]?.dt_txt.slice(5, 10)}
+                          </li>
+
+                          <li>Temp: {forecast?.list[idx]?.main?.temp} F</li>
+
+                          <li>
+                            Humidity: {forecast?.list[idx]?.main?.humidity}%
+                          </li>
+                        </ul>
+                      </div>
+                    );
+                  }
+                })
+              : ""}
           </div>
-        )}
-        ;
-        <div className="forecast-card">
-          {forecast.list
-            ? forecast.list.map((weatherItem, idx) => {
-                if (idx % 8 === 4) {
-                  return (
-                    // forecast card
-                    <div key={idx}>
-                      <ul>
-                        <li>
-                          Date: {forecast?.list[idx]?.dt_txt.slice(5, 10)}
-                        </li>
-
-                        <li>
-                          Temp: {forecast?.list[idx]?.main?.temp} F
-                        </li>
-
-                        <li>
-                          Humidity: {forecast?.list[idx]?.main?.humidity}%
-                        </li>
-                      </ul>
-                    </div>
-                  );
-                }
-              })
-            : ""}
         </div>
       </div>
     </div>
