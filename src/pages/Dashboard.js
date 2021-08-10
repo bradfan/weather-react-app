@@ -5,7 +5,7 @@ function Dashboard() {
   const [currentWeather, setCurrentWeather] = useState(false);
   const [city, setCity] = useState("");
   const [forecast, setForecast] = useState([]);
-  const [ultraViolet, setUltraViolet] = useState({})
+  const [ultraViolet, setUltraViolet] = useState({});
   console.log("currentWeather", currentWeather);
   console.log("forecast", forecast);
 
@@ -121,18 +121,12 @@ function Dashboard() {
                   if (idx % 8 === 4) {
                     return (
                       // forecast card
-                      <div key={idx}>
-                        <ul>
-                          <li>
-                            Date: {forecast?.list[idx]?.dt_txt.slice(5, 10)}
-                          </li>
+                      <div key={idx} className="forecast-card-small">
+                        <p>Date: {forecast?.list[idx]?.dt_txt.slice(5, 10)}</p>
 
-                          <li>Temp: {forecast?.list[idx]?.main?.temp} F</li>
+                        <p>Temp: {forecast?.list[idx]?.main?.temp} F</p>
 
-                          <li>
-                            Humidity: {forecast?.list[idx]?.main?.humidity}%
-                          </li>
-                        </ul>
+                        <p>Humidity: {forecast?.list[idx]?.main?.humidity}%</p>
                       </div>
                     );
                   }

@@ -55,7 +55,7 @@ body {
   display: inline-block;
   width: 20vh;
   height: 5vh;
-  border: .5px solid;
+  border: 0.5px solid;
   border-radius: 100px;
   position: relative;
 }
@@ -81,7 +81,7 @@ body {
   display: inline-block;
   width: 20vh;
   height: 5vh;
-  border: .5px solid;
+  border: 0.5px solid;
   border-radius: 100px;
   position: absolute;
   top: 0;
@@ -96,4 +96,36 @@ body {
 .btn:hover::after {
   transform: scaleX(1.6) scaleY(1.6);
   opacity: 0;
+}
+.day-box {
+  display: flex;
+  justify-content: center;
+  padding-top: 3%;
+  /* border: 3px solid black;
+  border-radius: 10px; */
+}
+/* .day-card {
+  display: flex;
+} */
+.forecast-box {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  
+}
+.forecast-card {
+  display: flex;
+  
+}
+.forecast-card-small {
+  background-image: linear-gradient(
+    to right bottom,
+    rgb(95, 158, 160, 0.5),
+    rgb(169, 169, 169, 0.5)
+  );
+  width: 20%;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+
 }
