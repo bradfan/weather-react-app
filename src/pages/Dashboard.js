@@ -1,10 +1,11 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import { api_key } from "../api.json";
 
 function Dashboard() {
   const [currentWeather, setCurrentWeather] = useState(false);
   const [city, setCity] = useState("");
   const [forecast, setForecast] = useState([]);
+  const [ultraViolet, setUltraViolet] = useState({})
   console.log("currentWeather", currentWeather);
   console.log("forecast", forecast);
 
@@ -20,14 +21,27 @@ function Dashboard() {
       });
   };
   const getForecast = () => {
-    const weatherURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&APPID=${api_key}`;
-    fetch(weatherURL)
+    const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&APPID=${api_key}`;
+    fetch(forecastURL)
       .then((res) => res.json())
       .then((data) => {
-        console.log("weather:", data);
+        console.log("forecast:", data);
         setForecast(data);
       });
   };
+  // const getUV = () => {
+  //   const lat = currentWeather.coord.lat;
+  //   const lon = currentWeather.coord.lon;
+  //   const uvURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${api_key}`;
+  //   fetch(uvURL)
+  //   .then((res) => res.json()
+  //   .then((data) => {
+  //     console.log("UV:", data);
+  //     setUltraViolet(data);
+
+  //   })
+  //   )
+  // }
 
   //  recieves input from user and assigns text to value and sets state for URL
   const handleInputChange = (event) => {
@@ -41,6 +55,7 @@ function Dashboard() {
     console.log("currentWeather:", currentWeather);
     getWeather();
     getForecast();
+    // getUV();
   });
 
   return (
@@ -74,7 +89,7 @@ function Dashboard() {
             <div className="day-card">
               <img src="..." className="day-card-img" alt="weather icon" />
               <div className="card-body">
-                <h4 className="card-title">{currentWeather.name}</h4>
+                <h3 className="card-title">{currentWeather.name}</h3>
                 <h5 className="today">Today's Weather:</h5>
                 <p className="temperature">
                   Current Temp: {currentWeather.main.temp} F
