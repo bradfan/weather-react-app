@@ -6,12 +6,12 @@ function Dashboard() {
   const [city, setCity] = useState("");
   const [forecast, setForecast] = useState([]);
   const [ultraViolet, setUltraViolet] = useState({});
-  console.log("currentWeather", currentWeather);
-  console.log("forecast", forecast);
+  // console.log("currentWeather", currentWeather);
+  // console.log("forecast", forecast);
 
   const getWeather = () => {
     const weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=imperial`;
-    console.log("weatherURL", weatherURL);
+    // console.log("weatherURL", weatherURL);
     // fetch data from the URL, resolve to json
     fetch(weatherURL)
       .then((res) => res.json())
