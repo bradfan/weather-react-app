@@ -47,18 +47,18 @@ function Dashboard() {
   const handleInputChange = (event) => {
     const val = event.target.value;
     setCity(val);
-    
     console.log("city data:", city);
   };
+
   // is useCallback correct here? Review code with api_key working.
   const onSubmit = useCallback((event) => {
     event.preventDefault();
-    if (currentWeather === false) return alert('Please enter a city name to begin your search.')
     console.log("currentWeather:", currentWeather);
     getWeather();
     getForecast();
     // getUV();
   });
+
 
   return (
     <div>
@@ -79,6 +79,8 @@ function Dashboard() {
           value={city}
           onClick={(event) => {
             console.log("city input by user:", event.target.value);
+            if (city === "")
+              return alert("Please enter a city name to begin your search.");
             onSubmit(event);
           }}
         >
@@ -89,7 +91,7 @@ function Dashboard() {
         <div className="day-box">
           {currentWeather && (
             <div className="day-card">
-              <img src="..." className="day-card-img" alt="weather icon" />
+              <img src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`} className="day-card-img" alt="weather icon" />
               <div className="card-body">
                 <h3 className="card-title">{currentWeather.name}</h3>
                 <h5 className="today">Today's Weather:</h5>
