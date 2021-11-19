@@ -1,6 +1,3 @@
-/* cadetblue: #5F9EA0
- #A9A9A9*/
-
 body {
   margin: 0;
   padding: 0;
@@ -21,35 +18,30 @@ body {
 .header {
   text-align: center;
   color: #1c6da0;
-  
 }
-
 
 .header-title {
   font-weight: 700;
   letter-spacing: 5px;
   font-family: "Times New Roman", Times, serif;
   padding-top: 5px;
-  
 }
 .header-text {
   font-family: "Times New Roman", Times, serif;
   padding-bottom: 10px;
-  
 }
 
 .display-box {
   background-image: linear-gradient(
-    to right bottom,
-    rgb(95, 158, 160, 0.5),
-    rgb(169, 169, 169, 0.5)
-  ), 
-  url(./images/weather1.jpg);
+      to right bottom,
+      rgb(95, 158, 160, 0.5),
+      rgb(169, 169, 169, 0.5)
+    ),
+    url(./images/weather1.jpg);
   background-size: cover;
   background-position: center;
   position: relative;
   background-repeat: no-repeat;
-  
 }
 .input-box {
   text-align: center;
@@ -113,17 +105,13 @@ body {
   opacity: 0;
 }
 .day-box {
-  
   display: flex;
   justify-content: center;
-  /* padding-top: 3%; */
-  /* border: 3px solid black;
-  border-radius: 10px; */
 }
 
 .card {
   display: block;
-  text-align:center;
+  text-align: center;
   background-image: linear-gradient(
     to right bottom,
     rgb(95, 158, 160, 0.5),
@@ -132,53 +120,49 @@ body {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
   border: none;
   border-radius: 10px;
-  /* padding: 10px; */
   transition: all 0.4s ease;
 }
 
-
-
 .day-card {
-  text-align:center;
-  border:none;
-  border-radius: 10px;
   margin-top: 1%;
   padding-bottom: 1%;
-  width:25%;
-  
+  width: 25%;
 }
 
-.overall{
+.overall {
   text-transform: uppercase;
 }
 
 .today {
-  font-weight:600;
+  font-weight: 600;
   font-size: large;
+}
+
+.day-card:hover {
+  transform: scale(1.02) translateY(-0.5rem);
+  transition: all 0.7s ease;
 }
 
 .forecast-box {
   /* display:flex; */
-  
 }
-
 
 .forecast-card {
   display: flex;
   justify-content: center;
   width: 100%;
-   /* display: grid;
+  /* display: grid;
    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
   grid-auto-columns: 200px;  
   
   Look into display: grid to even out the forecast cards. try to get five columns at max width*/
 }
 .forecast-card-small {
-  margin: 1%; 
+  margin: 1%;
   width: 20%;
 }
-.forecast-card-small:hover{
+.forecast-card-small:hover {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.9);
   transform: scale(1.05) translateY(-0.5rem);
-  transition: all 0.4s ease;
+  transition: all 0.5s ease;
 }

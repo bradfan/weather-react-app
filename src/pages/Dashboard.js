@@ -59,10 +59,8 @@ function Dashboard() {
     // getUV();
   });
 
-
   return (
-    <div class='dashboard'>
-      
+    <div class="dashboard">
       <div className="input-box">
         <input
           className="input-window"
@@ -88,11 +86,15 @@ function Dashboard() {
           Get Weather!!
         </button>
       </div>
-      <div class='display-box'>
+      <div class="display-box">
         <div className="day-box">
           {currentWeather && (
             <div className="card day-card">
-              <img src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`} className="day-card-img" alt="weather icon" />
+              <img
+                src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`}
+                className="day-card-img"
+                alt="weather icon"
+              />
               <div className="card-body">
                 <h3 className="card-title">{currentWeather.name}</h3>
                 <p className="today">Today's Weather:</p>
@@ -108,7 +110,7 @@ function Dashboard() {
                 <p className="hi-temperature">
                   Today's High: {currentWeather.main.temp_max} F
                 </p>
-               
+
                 <p className="humidity">
                   Humidity: {currentWeather.main.humidity}%
                 </p>
@@ -128,17 +130,25 @@ function Dashboard() {
                     return (
                       // forecast card
                       <div key={idx} className="card forecast-card-small">
-                        <img src={`https://openweathermap.org/img/wn/${forecast?.list[idx]?.weather[0].icon}@2x.png`}
-                        className="forecast-card-img" alt="weather icon" />
-                        <p className="overall">{forecast?.list[idx]?.weather[0].description}</p>
-                        <p className="today">Date: {forecast?.list[idx]?.dt_txt.slice(5, 10)}</p>
+                        <img
+                          src={`https://openweathermap.org/img/wn/${forecast?.list[idx]?.weather[0].icon}@2x.png`}
+                          className="forecast-card-img"
+                          alt="weather icon"
+                        />
+                        <p className="overall">
+                          {forecast?.list[idx]?.weather[0].description}
+                        </p>
+                        <p className="today">
+                          Date: {forecast?.list[idx]?.dt_txt.slice(5, 10)}
+                        </p>
 
                         <p>Temp: {forecast?.list[idx]?.main?.temp} F</p>
 
                         <p>Humidity: {forecast?.list[idx]?.main?.humidity}%</p>
-                        <p>Wind Speed: {forecast?.list[idx]?.wind?.speed} MPH</p>
+                        <p>
+                          Wind Speed: {forecast?.list[idx]?.wind?.speed} MPH
+                        </p>
                       </div>
-                      
                     );
                   }
                 })
