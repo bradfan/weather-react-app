@@ -126,12 +126,15 @@ function Dashboard() {
                     return (
                       // forecast card
                       <div key={idx} className="forecast-card-small">
+                        <img src={`https://openweathermap.org/img/wn/${forecast?.list[idx]?.weather[0].icon}@2x.png`}
+                        className="forecast-card-img" alt="weather icon" />
                         <p>Date: {forecast?.list[idx]?.dt_txt.slice(5, 10)}</p>
 
                         <p>Temp: {forecast?.list[idx]?.main?.temp} F</p>
 
                         <p>Humidity: {forecast?.list[idx]?.main?.humidity}%</p>
                       </div>
+                      
                     );
                   }
                 })
