@@ -152,6 +152,11 @@ body {
   text-transform: uppercase;
 }
 
+.today {
+  font-weight:600;
+  font-size: large;
+}
+
 .forecast-box {
   /* display:flex; */
   

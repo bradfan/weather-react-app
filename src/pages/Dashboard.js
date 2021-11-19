@@ -95,7 +95,7 @@ function Dashboard() {
               <img src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`} className="day-card-img" alt="weather icon" />
               <div className="card-body">
                 <h3 className="card-title">{currentWeather.name}</h3>
-                <h5 className="today">Today's Weather:</h5>
+                <p className="today">Today's Weather:</p>
                 <p className="overall">
                   {currentWeather.weather[0].description}
                 </p>
@@ -130,7 +130,8 @@ function Dashboard() {
                       <div key={idx} className="card forecast-card-small">
                         <img src={`https://openweathermap.org/img/wn/${forecast?.list[idx]?.weather[0].icon}@2x.png`}
                         className="forecast-card-img" alt="weather icon" />
-                        <p>Date: {forecast?.list[idx]?.dt_txt.slice(5, 10)}</p>
+                        <p className="overall">{forecast?.list[idx]?.weather[0].description}</p>
+                        <p className="today">Date: {forecast?.list[idx]?.dt_txt.slice(5, 10)}</p>
 
                         <p>Temp: {forecast?.list[idx]?.main?.temp} F</p>
 
