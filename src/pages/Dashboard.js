@@ -47,11 +47,13 @@ function Dashboard() {
   const handleInputChange = (event) => {
     const val = event.target.value;
     setCity(val);
+    
     console.log("city data:", city);
   };
   // is useCallback correct here? Review code with api_key working.
   const onSubmit = useCallback((event) => {
     event.preventDefault();
+    if (currentWeather === false) return alert('Please enter a city name to begin your search.')
     console.log("currentWeather:", currentWeather);
     getWeather();
     getForecast();
