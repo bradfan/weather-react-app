@@ -11,34 +11,49 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 95vh;
-  background-image: url(./images/weather1.jpg);
-  background-size: cover;
-  background-position: top;
-  position: relative;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(36, 47, 47, 0.5),
+    rgba(29, 2, 2, 0.5)
+  );
 }
 
 .header {
-  background-image: linear-gradient(
-    to right bottom,
-    rgb(95, 158, 160, 0.5),
-    rgb(169, 169, 169, 0.5)
-  );
   text-align: center;
+  color: #1c6da0;
+  
 }
+
+
 .header-title {
   font-weight: 700;
   letter-spacing: 5px;
   font-family: "Times New Roman", Times, serif;
   padding-top: 5px;
-  color: #87cefa;
+  
 }
 .header-text {
   font-family: "Times New Roman", Times, serif;
   padding-bottom: 10px;
-  color: #87cefa;
+  
+}
+
+.display-box {
+  background-image: linear-gradient(
+    to right bottom,
+    rgb(95, 158, 160, 0.5),
+    rgb(169, 169, 169, 0.5)
+  ), 
+  url(./images/weather1.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  background-repeat: no-repeat;
+  
 }
 .input-box {
   text-align: center;
+  padding-top: 5px;
 }
 .input-window {
   width: 30vh;
@@ -98,34 +113,67 @@ body {
   opacity: 0;
 }
 .day-box {
+  
   display: flex;
   justify-content: center;
-  padding-top: 3%;
+  /* padding-top: 3%; */
   /* border: 3px solid black;
   border-radius: 10px; */
 }
-/* .day-card {
-  display: flex;
-} */
-.forecast-box {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  
-}
-.forecast-card {
-  display: flex;
-  
-}
-.forecast-card-small {
+
+.card {
+  display: block;
+  text-align:center;
   background-image: linear-gradient(
     to right bottom,
     rgb(95, 158, 160, 0.5),
     rgb(169, 169, 169, 0.5)
   );
-  width: 20%;
-  border: 2px solid black;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  border: none;
   border-radius: 10px;
-  padding: 10px;
+  /* padding: 10px; */
+  transition: all 0.4s ease;
+}
 
+
+
+.day-card {
+  text-align:center;
+  border:none;
+  border-radius: 10px;
+  margin-top: 1%;
+  padding-bottom: 1%;
+  width:25%;
+  
+}
+
+.overall{
+  text-transform: uppercase;
+}
+
+.forecast-box {
+  /* display:flex; */
+  
+}
+
+
+.forecast-card {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+   /* display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  grid-auto-columns: 200px;  
+  
+  Look into display: grid to even out the forecast cards. try to get five columns at max width*/
+}
+.forecast-card-small {
+  margin: 1%; 
+  width: 20%;
+}
+.forecast-card-small:hover{
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.9);
+  transform: scale(1.05) translateY(-0.5rem);
+  transition: all 0.4s ease;
 }
