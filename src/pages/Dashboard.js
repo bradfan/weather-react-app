@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, } from "react";
 import { api_key } from "../api.json";
 
 function Dashboard() {
@@ -19,6 +19,23 @@ function Dashboard() {
         console.log("data:", data);
         setCurrentWeather(data);
       });
+     
+
+  };
+  let latitude = currentWeather.coord.lat;
+  let longitude = currentWeather.coord.lon;
+  
+  const getUV =  () => {
+    
+    const uvURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${latitude}&lon=${longitude}&appid=${api_key}`;
+    fetch(uvURL).then((res) =>
+      res.json().then((infoUV) => {
+        console.log("UV:", infoUV);
+        console.log("UV value:", infoUV.value);
+        setUV(infoUV);
+        console.log("UVstate:", UV);
+      })
+    );
   };
   const getForecast = () => {
     const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&APPID=${api_key}`;
@@ -29,20 +46,7 @@ function Dashboard() {
         setForecast(data);
       });
   };
-  const lat = currentWeather.coord.lat;
-  const lon = currentWeather.coord.lon;
-  const getUV = () => {
-  const uvURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${api_key}`;
-    fetch(uvURL)
-    .then((res) => res.json()
-    .then((burrito) => {
-      console.log("UV:", burrito);
-      console.log("UV value:", burrito.value)
-      setUV(burrito);
-
-    })
-    )
-  }
+  
 
   //  recieves input from user and assigns text to value and sets state for URL
   const handleInputChange = (event) => {
@@ -52,13 +56,13 @@ function Dashboard() {
   };
 
   // is useCallback correct here? Review code with api_key working.
-  const onSubmit = useCallback((event) => {
-    event.preventDefault();
+  const onSubmit = (e) => {
+    e.preventDefault();
     console.log("currentWeather:", currentWeather);
     getWeather();
     getForecast();
     getUV();
-  });
+  };
 
   return (
     <div className="dashboard">
@@ -118,6 +122,7 @@ function Dashboard() {
                 <p className="wind">
                   Wind Speed: {currentWeather.wind.speed} MPH
                 </p>
+                <p class="">UV Index: {UV.value}</p>
               </div>
             </div>
           )}

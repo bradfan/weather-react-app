@@ -143,9 +143,9 @@ body {
   transition: all 0.7s ease;
 }
 
-.forecast-box {
-  /* display:flex; */
-}
+/* .forecast-box {
+  display:flex;
+} */
 
 .forecast-card {
   display: flex;
