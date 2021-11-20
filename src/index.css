@@ -130,7 +130,7 @@ body {
 }
 
 .overall {
-  text-transform: uppercase;
+  text-transform:capitalize;
 }
 
 .today {

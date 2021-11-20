@@ -5,7 +5,7 @@ function Dashboard() {
   const [currentWeather, setCurrentWeather] = useState(false);
   const [city, setCity] = useState("");
   const [forecast, setForecast] = useState([]);
-  const [ultraViolet, setUltraViolet] = useState({});
+  const [UV, setUV] = useState({});
   // console.log("currentWeather", currentWeather);
   // console.log("forecast", forecast);
 
@@ -29,19 +29,20 @@ function Dashboard() {
         setForecast(data);
       });
   };
-  // const getUV = () => {
-  //   const lat = currentWeather.coord.lat;
-  //   const lon = currentWeather.coord.lon;
-  //   const uvURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${api_key}`;
-  //   fetch(uvURL)
-  //   .then((res) => res.json()
-  //   .then((data) => {
-  //     console.log("UV:", data);
-  //     setUltraViolet(data);
+  const lat = currentWeather.coord.lat;
+  const lon = currentWeather.coord.lon;
+  const getUV = () => {
+  const uvURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${api_key}`;
+    fetch(uvURL)
+    .then((res) => res.json()
+    .then((burrito) => {
+      console.log("UV:", burrito);
+      console.log("UV value:", burrito.value)
+      setUV(burrito);
 
-  //   })
-  //   )
-  // }
+    })
+    )
+  }
 
   //  recieves input from user and assigns text to value and sets state for URL
   const handleInputChange = (event) => {
@@ -56,11 +57,11 @@ function Dashboard() {
     console.log("currentWeather:", currentWeather);
     getWeather();
     getForecast();
-    // getUV();
+    getUV();
   });
 
   return (
-    <div class="dashboard">
+    <div className="dashboard">
       <div className="input-box">
         <input
           className="input-window"
@@ -86,7 +87,7 @@ function Dashboard() {
           Get Weather!!
         </button>
       </div>
-      <div class="display-box">
+      <div className="display-box">
         <div className="day-box">
           {currentWeather && (
             <div className="card day-card">
